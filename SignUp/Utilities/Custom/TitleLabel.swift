@@ -1,5 +1,5 @@
 //
-//  CustomLabel.swift
+//  TitleLabel.swift
 //  SignUp
 //
 //  Created by SC on 2022/11/02.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomLabel: UILabel {
+class TitleLabel: UILabel {
     // MARK: - Initializers
     init(text: String) {
         super.init(frame: .zero)

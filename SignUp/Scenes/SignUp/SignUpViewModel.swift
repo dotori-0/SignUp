@@ -14,22 +14,27 @@ class SignUpViewModel {
         let username: ControlProperty<String?>  // signUpView.usernameTextField.rx.text
         let email: ControlProperty<String?>     // signUpView.emailTextField.rx.text
         let password: ControlProperty<String?>  // signUpView.passwordTextField.rx.text
+        let signUpTap: ControlEvent<Void>
     }
     
     struct Output {
         let isValidUsername: Observable<Bool>
         let isValidEmail: Observable<Bool>
         let isValidPassword: Observable<Bool>
+        let signUpTap: ControlEvent<Void>
     }
     
     func validate(_ input: Input) -> Output {
         let isValidUsername = validate(username: input.username)
         let isValidEmail = validate(email: input.email)
         let isValidPassword = validate(password: input.password)
+//        let isValidAll = isValidUsername && isValidEmail && isValidPassword
+        // Cannot convert value of type 'Observable<Bool>' to expected argument type 'Bool'
         
         return Output(isValidUsername: isValidUsername,
                       isValidEmail: isValidEmail,
-                      isValidPassword: isValidPassword)
+                      isValidPassword: isValidPassword,
+                      signUpTap: input.signUpTap)
     }
     
     /// Validates username
@@ -65,9 +70,14 @@ class SignUpViewModel {
         return isValidPassword
     }
     
-//    func validateUsername(of username: String, errorHandler) {
-//        if username.isEmpty {  }
-//    }
+    func signUp(userName: String, email: String, password: String,
+                completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+        APIService.shared.signUp(userName: userName, email: email, password: password) {
+            completionHandler()
+        } errorHandler: { error in
+            errorHandler(error)
+        }
+    }
     
     // 유저네임
     // 빈 문자열은 501 Not Implemented

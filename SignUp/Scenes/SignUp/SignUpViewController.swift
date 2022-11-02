@@ -29,7 +29,8 @@ class SignUpViewController: BaseViewController {
         // Input & Output
         let input = SignUpViewModel.Input(username: signUpView.usernameTextField.rx.text,
                                           email: signUpView.emailTextField.rx.text,
-                                          password: signUpView.passwordTextField.rx.text)
+                                          password: signUpView.passwordTextField.rx.text,
+                                          signUpTap: signUpView.signUpButton.rx.tap)
         let output = signUpViewModel.validate(input)
         
         output.isValidUsername
@@ -56,6 +57,42 @@ class SignUpViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        // 이렇게 하는 형태가 맞는지? ❔
+        Observable.combineLatest(output.isValidUsername, output.isValidEmail, output.isValidPassword)
+//            .withUnretained(self)
+//            .bind(onNext: { (SignUpViewController, (Bool, Bool, Bool)) in
+//                <#code#>
+//            })
+            .bind { [weak self] (isValidUsername, isValidEmail, isValidPassword) in
+                self?.signUpView.signUpButton.isEnabled = isValidUsername && isValidEmail && isValidPassword
+            }
+            .disposed(by: disposeBag)
+        
+        
+        output.signUpTap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let username = vc.signUpView.usernameTextField.text,
+                      let email = vc.signUpView.emailTextField.text,
+                      let password = vc.signUpView.passwordTextField.text else {
+                    vc.alert(title: String.error, message: String.inputReadingError)
+                    return
+                }
+                
+                vc.signUpViewModel.signUp(userName: username, email: email, password: password) {
+                    vc.alert(title: String.success, message: String.signUpSucess)
+                    print(username, email, password)
+                } errorHandler: { error in
+                    guard let error = error else {
+                        vc.alert(title: String.error, message: String.serverError)
+                        return
+                    }
+                    
+                    vc.alert(title: String.error, message: String.emailAlreadyTaken)
+                }
+            }
+            .disposed(by: disposeBag)
+            
         
         
 //        signUpView.usernameTextField.rx

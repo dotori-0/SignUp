@@ -29,12 +29,13 @@
 		0A6C00BB291288B500003294 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00BA291288B500003294 /* SignUpView.swift */; };
 		0A6C00C0291289A500003294 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00BF291289A500003294 /* CustomTextField.swift */; };
 		0A6C00C229128DB500003294 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00C129128DB500003294 /* String+Extension.swift */; };
-		0A6C00C429128FC200003294 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00C329128FC200003294 /* CustomLabel.swift */; };
+		0A6C00C429128FC200003294 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00C329128FC200003294 /* TitleLabel.swift */; };
 		0A6C00C6291296CF00003294 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00C5291296CF00003294 /* SignUpViewModel.swift */; };
 		0A6C00C92912980C00003294 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6C00C82912980C00003294 /* RxCocoa */; };
 		0A6C00CB2912980D00003294 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6C00CA2912980D00003294 /* RxSwift */; };
 		0A6C00CD2912B58100003294 /* GuideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00CC2912B58100003294 /* GuideLabel.swift */; };
 		0A6C00CF2912C53100003294 /* Inset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00CE2912C53100003294 /* Inset+Extension.swift */; };
+		0A6C00D12912C71D00003294 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00D02912C71D00003294 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,10 +60,11 @@
 		0A6C00BA291288B500003294 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0A6C00BF291289A500003294 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0A6C00C129128DB500003294 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		0A6C00C329128FC200003294 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		0A6C00C329128FC200003294 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		0A6C00C5291296CF00003294 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0A6C00CC2912B58100003294 /* GuideLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideLabel.swift; sourceTree = "<group>"; };
 		0A6C00CE2912C53100003294 /* Inset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inset+Extension.swift"; sourceTree = "<group>"; };
+		0A6C00D02912C71D00003294 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,8 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				0A6C00BF291289A500003294 /* CustomTextField.swift */,
-				0A6C00C329128FC200003294 /* CustomLabel.swift */,
+				0A6C00C329128FC200003294 /* TitleLabel.swift */,
 				0A6C00CC2912B58100003294 /* GuideLabel.swift */,
+				0A6C00D02912C71D00003294 /* CustomButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -290,11 +293,12 @@
 				0A6C00A529127B8B00003294 /* Profile.swift in Sources */,
 				0A6C00C6291296CF00003294 /* SignUpViewModel.swift in Sources */,
 				0A6C00AD2912881100003294 /* Alert+Extension.swift in Sources */,
-				0A6C00C429128FC200003294 /* CustomLabel.swift in Sources */,
+				0A6C00C429128FC200003294 /* TitleLabel.swift in Sources */,
 				0A6C00872912544E00003294 /* ViewController.swift in Sources */,
 				0A6C00832912544E00003294 /* AppDelegate.swift in Sources */,
 				0A6C00B02912884700003294 /* BaseViewController.swift in Sources */,
 				0A6C0099291254BA00003294 /* SignUpViewController.swift in Sources */,
+				0A6C00D12912C71D00003294 /* CustomButton.swift in Sources */,
 				0A6C00CD2912B58100003294 /* GuideLabel.swift in Sources */,
 				0A6C00A729127B9400003294 /* User.swift in Sources */,
 				0A6C00AA2912819300003294 /* StatusCode.swift in Sources */,
