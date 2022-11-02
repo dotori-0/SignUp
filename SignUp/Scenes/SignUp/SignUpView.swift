@@ -11,8 +11,14 @@ class SignUpView: BaseView {
     // MARK: - Properties
     let signUpLabel = CustomLabel(text: String.signUp)
     let usernameTextField = CustomTextField(placeholder: String.username)
-    let emailTextField = CustomTextField(placeholder: String.email)
+    let emailTextField = CustomTextField(placeholder: String.email).then {
+        $0.keyboardType = .emailAddress
+    }
     let passwordTextField = CustomTextField(placeholder: String.password)
+    
+    let usernameGuideLabel = GuideLabel(text: String.usernameGuide)
+    let emailGuideLabel = GuideLabel(text: String.emailGuide)
+    let passwordGuideLabel = GuideLabel(text: String.passwordGuide)
     
 //    let usernameTextField = CustomTextField().then {
 //        $0.placeholder = String.username
@@ -43,7 +49,7 @@ class SignUpView: BaseView {
     }
     
     override func setHierarchy() {  // addSubView, CollectionView init, SnapKit 구성 등
-        [signUpLabel, usernameTextField, emailTextField, passwordTextField].forEach {
+        [signUpLabel, usernameTextField, usernameGuideLabel, emailTextField, emailGuideLabel, passwordTextField, passwordGuideLabel].forEach {
             addSubview($0)
         }
     }
@@ -61,18 +67,36 @@ class SignUpView: BaseView {
             make.height.equalTo(50)
         }
         
+        usernameGuideLabel.snp.makeConstraints { make in
+            make.top.equalTo(usernameTextField.snp.bottom).offset(6)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+        }
+        
         emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(30)
+            make.top.equalTo(usernameGuideLabel.snp.bottom).offset(30)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
         
+        emailGuideLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(6)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
+        }
+        
         passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).offset(30)
+            make.top.equalTo(emailGuideLabel.snp.bottom).offset(30)
             make.width.equalToSuperview().multipliedBy(0.8)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
+        }
+        
+        passwordGuideLabel.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(6)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.centerX.equalToSuperview()
         }
     }
 }
