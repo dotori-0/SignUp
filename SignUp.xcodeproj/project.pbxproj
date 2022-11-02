@@ -34,6 +34,7 @@
 		0A6C00C92912980C00003294 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6C00C82912980C00003294 /* RxCocoa */; };
 		0A6C00CB2912980D00003294 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6C00CA2912980D00003294 /* RxSwift */; };
 		0A6C00CD2912B58100003294 /* GuideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00CC2912B58100003294 /* GuideLabel.swift */; };
+		0A6C00CF2912C53100003294 /* Inset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00CE2912C53100003294 /* Inset+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		0A6C00C329128FC200003294 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		0A6C00C5291296CF00003294 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0A6C00CC2912B58100003294 /* GuideLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideLabel.swift; sourceTree = "<group>"; };
+		0A6C00CE2912C53100003294 /* Inset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inset+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				0A6C00AC2912881100003294 /* Alert+Extension.swift */,
+				0A6C00CE2912C53100003294 /* Inset+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				0A6C00A12912575200003294 /* APIService.swift in Sources */,
 				0A6C009B2912550200003294 /* SeSACAPI.swift in Sources */,
 				0A6C00C0291289A500003294 /* CustomTextField.swift in Sources */,
+				0A6C00CF2912C53100003294 /* Inset+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
