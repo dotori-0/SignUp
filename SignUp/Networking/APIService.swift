@@ -48,7 +48,10 @@ final class APIService: HandlerType {
                     case .success(let login):
                         print("🐣 로그인 성공")
                         print(login.token)
-                        UserDefaults.standard.set(login.token, forKey: "token")
+                        print("UD token: \(UserDefaults.token)")
+//                        UserDefaults.standard.set(login.token, forKey: "token")  // 로그인할 때마다 토큰이 달라지므로 새로 갈아 끼우기
+                        UserDefaults.token = login.token
+                        print("UD token: \(UserDefaults.token)")
                         completionHandler()
                     case .failure(_):
                         print("🐣 로그인 실패")

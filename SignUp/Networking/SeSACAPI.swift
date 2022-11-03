@@ -31,7 +31,7 @@ extension SeSACAPI {
             case .signup, .login:
                 return ["Content-Type": "application/x-www-form-urlencoded"]
             case .profile:
-                return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjFjYTg1NDIyNDI1MmZkNzlhNGZmNiIsImlhdCI6MTY2NzM1MzczMCwiZXhwIjoxNjY3NDQwMTMwfQ.gNUHJrLdL9QXoLc1vaBDEgeSWBIKXFpZ7POhqc5t6Y8"]
+                return ["Authorization": "Bearer \(UserDefaults.token)"]
         }
     }
     
