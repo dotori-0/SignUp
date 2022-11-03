@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let firstNavVC = UINavigationController(rootViewController: LogInViewController())
+        let firstNavVC = UINavigationController(rootViewController: SignUpViewController())
         
         window?.rootViewController = firstNavVC
         window?.makeKeyAndVisible()

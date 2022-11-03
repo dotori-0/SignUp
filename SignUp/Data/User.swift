@@ -9,8 +9,8 @@ import Foundation
 
 struct User: Codable {
     let photo: String?
-    let followers: [User]
-    let following: [User]
+//    let followers: [User]  // 추가할 경우 APIService의 profile 메서드에서 .failure로 떨어지는데 statusCode는 200으로 나온다,, ❔
+//    let following: [User]
     let id: String
     let email: String
     let username: String

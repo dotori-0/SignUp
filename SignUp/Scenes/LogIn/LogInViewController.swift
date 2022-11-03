@@ -69,7 +69,7 @@ class LogInViewController: BaseViewController {
                 
                 vc.logInViewModel.logIn(email: email, password: password) {
                     vc.logInView.makeToast(String.logInSuccess, duration: 0.5, position: .center) { _ in
-                        vc.navigationController?.pushViewController(LogInViewController(), animated: true)
+                        vc.navigationController?.pushViewController(ProfileViewController(), animated: true)
                     }
                     print(email, password)
                 } errorHandler: { error in

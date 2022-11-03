@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    // Sign Up & Log In
     static let signUp = "Sign Up"
     static let logIn = "Log In"
     static let username = "유저네임을 입력해 주세요"
@@ -19,13 +20,21 @@ extension String {
     static let correctPasswordGuide = "알맞은 비밀번호를 입력해 주세요."
     static let passwordGuide = "비밀번호는 8자 이상이어야 합니다."
     
+    // Error
     static let error = "오류"
     static let inputReadingError = "입력값 읽기에 오류가 발생했습니다."
     static let serverError = "서버 통신에 오류가 있습니다."
     static let emailAlreadyTaken = "이미 가입된 이메일입니다."
     static let wrongEmailOrPassword = "이메일 혹은 비밀번호가 틀렸습니다."
     
+    // Success
     static let success = "성공"
     static let signUpSuccess = "회원가입에 성공했습니다.\n로그인해 주세요."
     static let logInSuccess = "성공적으로 로그인되었습니다."
+    
+    // Profile
+    static let profile = "Profile"
+    static let followers = "Followers"
+    static let following = "Following"
+    static let logOut = "Log Out"
 }

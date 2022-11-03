@@ -72,7 +72,8 @@ final class APIService: HandlerType {
             }
     }
     
-    func profile(completionHandler: @escaping completionHandler, errorHandler: @escaping errorHandler) {
+    func profile(completionHandler: @escaping (Profile?) -> Void,
+                 errorHandler: @escaping errorHandler) {
         let api = SeSACAPI.profile
         
         AF.request(api.url, method: .get, headers: api.headers)
@@ -81,7 +82,7 @@ final class APIService: HandlerType {
                     case .success(let profile):
                         print("🐣 프로필 조회 성공")
                         print(profile)
-                        completionHandler()
+                        completionHandler(profile)
                     case .failure(_):
                         print("🐣 프로필 조회 실패")
                         print(response.response?.statusCode)
