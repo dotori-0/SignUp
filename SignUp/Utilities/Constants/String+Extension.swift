@@ -23,7 +23,9 @@ extension String {
     static let inputReadingError = "입력값 읽기에 오류가 발생했습니다."
     static let serverError = "서버 통신에 오류가 있습니다."
     static let emailAlreadyTaken = "이미 가입된 이메일입니다."
+    static let wrongEmailOrPassword = "이메일 혹은 비밀번호가 틀렸습니다."
     
     static let success = "성공"
-    static let signUpSucess = "회원가입에 성공했습니다.\n로그인해 주세요."
+    static let signUpSuccess = "회원가입에 성공했습니다.\n로그인해 주세요."
+    static let logInSuccess = "성공적으로 로그인되었습니다."
 }

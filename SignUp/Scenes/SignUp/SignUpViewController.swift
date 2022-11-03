@@ -19,13 +19,15 @@ class SignUpViewController: BaseViewController {
     override func loadView() {
         view = signUpView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bind()
     }
     
-    func bind() {
+    // MARK: - Private Methods
+    private func bind() {
         // Input & Output
         let input = SignUpViewModel.Input(username: signUpView.usernameTextField.rx.text,
                                           email: signUpView.emailTextField.rx.text,
@@ -36,7 +38,7 @@ class SignUpViewController: BaseViewController {
         output.isValidUsername
             .withUnretained(self)
             .bind { (vc, isValidUsername) in
-                let color: CGColor = isValidUsername ? UIColor.systemGreen.cgColor : UIColor.systemGray5.cgColor  // 👻 뭔가 입력했지만 조건에 맞지 안을 경우 빨갛게 바꾸기
+                let color: CGColor = isValidUsername ? .valid : .invalid  // 👻 뭔가 입력했지만 조건에 맞지 안을 경우 빨갛게 바꾸기
                 vc.signUpView.usernameTextField.layer.borderColor = color
             }
             .disposed(by: disposeBag)
@@ -44,7 +46,7 @@ class SignUpViewController: BaseViewController {
         output.isValidEmail
             .withUnretained(self)
             .bind { (vc, isValidEmail) in
-                let color: CGColor = isValidEmail ? UIColor.systemGreen.cgColor : UIColor.systemGray5.cgColor
+                let color: CGColor = isValidEmail ? .valid : .invalid
                 vc.signUpView.emailTextField.layer.borderColor = color
             }
             .disposed(by: disposeBag)
@@ -52,7 +54,7 @@ class SignUpViewController: BaseViewController {
         output.isValidPassword
             .withUnretained(self)
             .bind { (vc, isValidPassword) in
-                let color: CGColor = isValidPassword ? UIColor.systemGreen.cgColor : UIColor.systemGray5.cgColor
+                let color: CGColor = isValidPassword ? .valid : .invalid
                 vc.signUpView.passwordTextField.layer.borderColor = color
             }
             .disposed(by: disposeBag)
@@ -81,7 +83,7 @@ class SignUpViewController: BaseViewController {
                 
                 vc.signUpViewModel.signUp(userName: username, email: email, password: password) {
 //                    vc.alert(title: String.success, message: String.signUpSucess)
-                    vc.signUpView.makeToast(String.signUpSucess, duration: 0.5, position: .center) { _ in
+                    vc.signUpView.makeToast(String.signUpSuccess, duration: 0.5, position: .center) { _ in
                         vc.navigationController?.pushViewController(LogInViewController(), animated: true)
                     }
                     print(username, email, password)
