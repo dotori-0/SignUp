@@ -7,6 +7,37 @@
 
 import Foundation
 
-class LogInViewModel {
+import RxCocoa
+import RxSwift
+
+class LogInViewModel: Validation, CommonViewModel {
+    struct Input {
+        let email: ControlProperty<String?>
+        let password: ControlProperty<String?>
+        let logInTap: ControlEvent<Void>
+    }
     
+    struct Output {
+        let isValidEmail: Observable<Bool>
+        let isValidPassword: Observable<Bool>
+        let logInTap: ControlEvent<Void>
+    }
+    
+    func validate(_ input: Input) -> Output {
+        let isValidEmail = validate(email: input.email)
+        let isValidPassword = validate(password: input.password)
+        
+        return Output(isValidEmail: isValidEmail,
+                      isValidPassword: isValidPassword,
+                      logInTap: input.logInTap)
+    }
+    
+    func logIn(email: String, password: String,
+               completionHandler: @escaping completionHandler, errorHandler: @escaping errorHandler) {
+        APIService.shared.logIn(email: email, password: password) {
+            completionHandler()
+        } errorHandler: { error in
+            errorHandler(error)
+        }
+    }
 }
