@@ -6,18 +6,13 @@
 //
 
 import Foundation
+
+// Validation Class를 상속하는데 왜 여기서도 import를 해야 하는지? ❔
 import RxSwift
 import RxCocoa
 
 
-protocol ValidationType {
-//    typealias completionHandler = @escaping () -> Void  // @escaping attribute may only be used in function parameter position
-    typealias completionHandler = () -> Void
-    typealias errorHandler = (Error?) -> Void
-}
-
-
-class SignUpViewModel: ValidationType {
+final class SignUpViewModel: Validation, CommonViewModel {
     struct Input {
         let username: ControlProperty<String?>  // signUpView.usernameTextField.rx.text
         let email: ControlProperty<String?>     // signUpView.emailTextField.rx.text
@@ -29,7 +24,7 @@ class SignUpViewModel: ValidationType {
         let isValidUsername: Observable<Bool>
         let isValidEmail: Observable<Bool>
         let isValidPassword: Observable<Bool>
-        let signUpTap: ControlEvent<Void>
+        let signUpTap: ControlEvent<Void>  // 그대로 내보낼 객체들도 인풋 아웃풋에 넣는 게 나은 건지?
     }
     
     func validate(_ input: Input) -> Output {
@@ -45,38 +40,38 @@ class SignUpViewModel: ValidationType {
                       signUpTap: input.signUpTap)
     }
     
-    /// Validates username
-    private func validate(username: ControlProperty<String?>) -> Observable<Bool> {
-        let isValidUsername = username
-                                .orEmpty
-                                .map { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }  // Observable<Bool>
-        
-        return isValidUsername
-    }
-    
-    /// Validates email
-    private func validate(email: ControlProperty<String?>) -> Observable<Bool> {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        
-        let isValidEmail = email
-                            .orEmpty
-                            .map { emailTest.evaluate(with: $0) }
-        
-        return isValidEmail
-    }
-    
-    /// Validates password
-    private func validate(password: ControlProperty<String?>) -> Observable<Bool> {
-        let passwordRegEx = "^[a-zA-Z0-9]{8,}$"
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
-        
-        let isValidPassword = password
-                                .orEmpty
-                                .map { passwordTest.evaluate(with: $0) }
-        
-        return isValidPassword
-    }
+//    /// Validates username
+//    private func validate(username: ControlProperty<String?>) -> Observable<Bool> {
+//        let isValidUsername = username
+//                                .orEmpty
+//                                .map { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }  // Observable<Bool>
+//
+//        return isValidUsername
+//    }
+//
+//    /// Validates email
+//    private func validate(email: ControlProperty<String?>) -> Observable<Bool> {
+//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+//        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+//
+//        let isValidEmail = email
+//                            .orEmpty
+//                            .map { emailTest.evaluate(with: $0) }
+//
+//        return isValidEmail
+//    }
+//
+//    /// Validates password
+//    private func validate(password: ControlProperty<String?>) -> Observable<Bool> {
+//        let passwordRegEx = "^[a-zA-Z0-9]{8,}$"
+//        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+//
+//        let isValidPassword = password
+//                                .orEmpty
+//                                .map { passwordTest.evaluate(with: $0) }
+//
+//        return isValidPassword
+//    }
     
     func signUp(userName: String, email: String, password: String,
 //                completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
