@@ -8,13 +8,13 @@
 import Foundation
 import Alamofire  // 👻 URLSession으로 해 보기
 
-class APIService {
+final class APIService: HandlerType {
     static let shared = APIService()
     
     private init() { }
     
-    func signUp(userName: String, email: String, password: String,  // 👻 typealias
-                completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+    func signUp(userName: String, email: String, password: String,
+                completionHandler: @escaping completionHandler, errorHandler: @escaping errorHandler) {
         let api = SeSACAPI.signup(userName: userName, email: email, password: password)
         
         AF.request(api.url, method: .post, parameters: api.parameters, headers: api.headers)
@@ -38,7 +38,7 @@ class APIService {
     }
     
     func logIn(email: String, password: String,
-               completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+               completionHandler: @escaping completionHandler, errorHandler: @escaping errorHandler) {
         let api = SeSACAPI.login(email: email, password: password)
         
         AF.request(api.url, method: .post, parameters: api.parameters)
@@ -69,7 +69,7 @@ class APIService {
             }
     }
     
-    func profile(completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+    func profile(completionHandler: @escaping completionHandler, errorHandler: @escaping errorHandler) {
         let api = SeSACAPI.profile
         
         AF.request(api.url, method: .get, headers: api.headers)

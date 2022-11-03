@@ -19,88 +19,68 @@ class LogInViewController: BaseViewController {
     override func loadView() {
         view = logInView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        bind()
+        bind()
     }
     
-//    func bind() {
-//        // Input & Output
-//        let input = SignUpViewModel.Input(username: logInView.usernameTextField.rx.text,
-//                                          email: logInView.emailTextField.rx.text,
-//                                          password: logInView.passwordTextField.rx.text,
-//                                          signUpTap: logInView.signUpButton.rx.tap)
-//        let output = signUpViewModel.validate(input)
-//
-//        output.isValidUsername
-//            .withUnretained(self)
-//            .bind { (vc, isValidUsername) in
-//                let color: CGColor = isValidUsername ? UIColor.systemGreen.cgColor : UIColor.systemGray5.cgColor  // 👻 뭔가 입력했지만 조건에 맞지 안을 경우 빨갛게 바꾸기
-//                vc.logInView.usernameTextField.layer.borderColor = color
-//            }
-//            .disposed(by: disposeBag)
-//
-//        output.isValidEmail
-//            .withUnretained(self)
-//            .bind { (vc, isValidEmail) in
-//                let color: CGColor = isValidEmail ? UIColor.systemGreen.cgColor : UIColor.systemGray5.cgColor
-//                vc.logInView.emailTextField.layer.borderColor = color
-//            }
-//            .disposed(by: disposeBag)
-//
-//        output.isValidPassword
-//            .withUnretained(self)
-//            .bind { (vc, isValidPassword) in
-//                let color: CGColor = isValidPassword ? UIColor.systemGreen.cgColor : UIColor.systemGray5.cgColor
-//                vc.logInView.passwordTextField.layer.borderColor = color
-//            }
-//            .disposed(by: disposeBag)
-//
-//        // 이렇게 하는 형태가 맞는지? ❔
-//        Observable.combineLatest(output.isValidUsername, output.isValidEmail, output.isValidPassword)
-////            .withUnretained(self)
-////            .bind(onNext: { (SignUpViewController, (Bool, Bool, Bool)) in
-////                <#code#>
-////            })
-//            .bind { [weak self] (isValidUsername, isValidEmail, isValidPassword) in
-//                self?.logInView.signUpButton.isEnabled = isValidUsername && isValidEmail && isValidPassword
-//            }
-//            .disposed(by: disposeBag)
-//
-//
-//        output.signUpTap
-//            .withUnretained(self)
-//            .bind { (vc, _) in
-//                guard let username = vc.logInView.usernameTextField.text,
-//                      let email = vc.logInView.emailTextField.text,
-//                      let password = vc.logInView.passwordTextField.text else {
-//                    vc.alert(title: String.error, message: String.inputReadingError)
-//                    return
-//                }
-//
-//                vc.signUpViewModel.signUp(userName: username, email: email, password: password) {
-//                    vc.alert(title: String.success, message: String.signUpSucess)
-//                    print(username, email, password)
-//                } errorHandler: { error in
-//                    guard let error = error else {
-//                        vc.alert(title: String.error, message: String.serverError)
-//                        return
-//                    }
-//
-//                    vc.alert(title: String.error, message: String.emailAlreadyTaken)
-//                }
-//            }
-//            .disposed(by: disposeBag)
-//
-//
-//
-////        signUpView.usernameTextField.rx
-////            .text
-////            .orEmpty
-////            .withUnretained(self)
-////            .bind { (vc, username) in
-//////                vc.signUpViewModel.validateUsername(of: username)
-////            }
-//    }
+    // MARK: - Private Methods
+    func bind() {
+        // Input & Output
+        let input = LogInViewModel.Input(email: logInView.emailTextField.rx.text,
+                                         password: logInView.passwordTextField.rx.text,
+                                         logInTap: logInView.logInButton.rx.tap)
+        
+        let output = logInViewModel.validate(input)
+
+        output.isValidEmail
+            .withUnretained(self)
+            .bind { (vc, isValidEmail) in
+                let color: CGColor = isValidEmail ? .valid : .invalid
+                vc.logInView.emailTextField.layer.borderColor = color
+            }
+            .disposed(by: disposeBag)
+
+        output.isValidPassword
+            .withUnretained(self)
+            .bind { (vc, isValidPassword) in
+                let color: CGColor = isValidPassword ? .valid : .invalid
+                vc.logInView.passwordTextField.layer.borderColor = color
+            }
+            .disposed(by: disposeBag)
+
+        // 이렇게 하는 형태가 맞는지? ❔
+        Observable.combineLatest(output.isValidEmail, output.isValidPassword)
+            .bind { [weak self] (isValidEmail, isValidPassword) in
+                self?.logInView.logInButton.isEnabled = isValidEmail && isValidPassword
+            }
+            .disposed(by: disposeBag)
+        
+        output.logInTap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                guard let email = vc.logInView.emailTextField.text,
+                      let password = vc.logInView.passwordTextField.text else {
+                    vc.alert(title: String.error, message: String.inputReadingError)
+                    return
+                }
+                
+                vc.logInViewModel.logIn(email: email, password: password) {
+                    vc.logInView.makeToast(String.logInSuccess, duration: 0.5, position: .center) { _ in
+                        vc.navigationController?.pushViewController(LogInViewController(), animated: true)
+                    }
+                    print(email, password)
+                } errorHandler: { error in
+                    guard error != nil else {
+                        vc.alert(title: String.error, message: String.serverError)
+                        return
+                    }
+
+                    vc.alert(title: String.error, message: String.wrongEmailOrPassword)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 }
