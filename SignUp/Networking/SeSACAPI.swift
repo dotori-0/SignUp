@@ -15,7 +15,7 @@ enum SeSACAPI {
 }
 
 extension SeSACAPI {
-    var url: String {
+    var url: String {  // URL이 아니라 String으로 해도 되지만 URL로 하는 것이 더 맞는지?
         switch self {
             case .signup:
                 return "http://api.memolease.com/api/v1/users/signup"

@@ -36,6 +36,11 @@
 		0A6C00CD2912B58100003294 /* GuideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00CC2912B58100003294 /* GuideLabel.swift */; };
 		0A6C00CF2912C53100003294 /* Inset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00CE2912C53100003294 /* Inset+Extension.swift */; };
 		0A6C00D12912C71D00003294 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00D02912C71D00003294 /* CustomButton.swift */; };
+		0A6C00D42912F5E600003294 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6C00D32912F5E600003294 /* LogInViewController.swift */; };
+		0A7A30302912F6710002ED95 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A302F2912F6710002ED95 /* LogInView.swift */; };
+		0A7A30322912F8970002ED95 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A30312912F8970002ED95 /* LogInViewModel.swift */; };
+		0A7A303529133C9D0002ED95 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0A7A303429133C9D0002ED95 /* Toast */; };
+		0A7A3037291347B40002ED95 /* AccountError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3036291347B40002ED95 /* AccountError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +70,10 @@
 		0A6C00CC2912B58100003294 /* GuideLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideLabel.swift; sourceTree = "<group>"; };
 		0A6C00CE2912C53100003294 /* Inset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inset+Extension.swift"; sourceTree = "<group>"; };
 		0A6C00D02912C71D00003294 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0A6C00D32912F5E600003294 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		0A7A302F2912F6710002ED95 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		0A7A30312912F8970002ED95 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		0A7A3036291347B40002ED95 /* AccountError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7A303529133C9D0002ED95 /* Toast in Frameworks */,
 				0A6C009F291255EE00003294 /* Alamofire in Frameworks */,
 				0A6C00B62912887700003294 /* Then in Frameworks */,
 				0A6C00CB2912980D00003294 /* RxSwift in Frameworks */,
@@ -122,6 +132,7 @@
 			children = (
 				0A6C009A2912550200003294 /* SeSACAPI.swift */,
 				0A6C00A02912575200003294 /* APIService.swift */,
+				0A7A3036291347B40002ED95 /* AccountError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -130,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				0A6C00B9291288A300003294 /* SignUp */,
+				0A6C00D22912F5BF00003294 /* LogIn */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -203,6 +215,16 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		0A6C00D22912F5BF00003294 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				0A6C00D32912F5E600003294 /* LogInViewController.swift */,
+				0A7A302F2912F6710002ED95 /* LogInView.swift */,
+				0A7A30312912F8970002ED95 /* LogInViewModel.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,6 +247,7 @@
 				0A6C00B52912887700003294 /* Then */,
 				0A6C00C82912980C00003294 /* RxCocoa */,
 				0A6C00CA2912980D00003294 /* RxSwift */,
+				0A7A303429133C9D0002ED95 /* Toast */,
 			);
 			productName = SignUp;
 			productReference = 0A6C007F2912544E00003294 /* SignUp.app */;
@@ -259,6 +282,7 @@
 				0A6C00B12912886B00003294 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0A6C00B42912887700003294 /* XCRemoteSwiftPackageReference "Then" */,
 				0A6C00C72912980C00003294 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				0A7A303329133C9D0002ED95 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 0A6C00802912544E00003294 /* Products */;
 			projectDirPath = "";
@@ -289,17 +313,21 @@
 			files = (
 				0A6C00C229128DB500003294 /* String+Extension.swift in Sources */,
 				0A6C00A329127A5800003294 /* Login.swift in Sources */,
+				0A6C00D42912F5E600003294 /* LogInViewController.swift in Sources */,
 				0A6C00B82912888900003294 /* BaseView.swift in Sources */,
+				0A7A30322912F8970002ED95 /* LogInViewModel.swift in Sources */,
 				0A6C00A529127B8B00003294 /* Profile.swift in Sources */,
 				0A6C00C6291296CF00003294 /* SignUpViewModel.swift in Sources */,
 				0A6C00AD2912881100003294 /* Alert+Extension.swift in Sources */,
 				0A6C00C429128FC200003294 /* TitleLabel.swift in Sources */,
 				0A6C00872912544E00003294 /* ViewController.swift in Sources */,
+				0A7A30302912F6710002ED95 /* LogInView.swift in Sources */,
 				0A6C00832912544E00003294 /* AppDelegate.swift in Sources */,
 				0A6C00B02912884700003294 /* BaseViewController.swift in Sources */,
 				0A6C0099291254BA00003294 /* SignUpViewController.swift in Sources */,
 				0A6C00D12912C71D00003294 /* CustomButton.swift in Sources */,
 				0A6C00CD2912B58100003294 /* GuideLabel.swift in Sources */,
+				0A7A3037291347B40002ED95 /* AccountError.swift in Sources */,
 				0A6C00A729127B9400003294 /* User.swift in Sources */,
 				0A6C00AA2912819300003294 /* StatusCode.swift in Sources */,
 				0A6C00BB291288B500003294 /* SignUpView.swift in Sources */,
@@ -559,6 +587,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		0A7A303329133C9D0002ED95 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -586,6 +622,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A6C00C72912980C00003294 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		0A7A303429133C9D0002ED95 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A7A303329133C9D0002ED95 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

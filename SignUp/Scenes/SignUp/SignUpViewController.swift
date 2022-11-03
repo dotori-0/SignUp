@@ -80,10 +80,13 @@ class SignUpViewController: BaseViewController {
                 }
                 
                 vc.signUpViewModel.signUp(userName: username, email: email, password: password) {
-                    vc.alert(title: String.success, message: String.signUpSucess)
+//                    vc.alert(title: String.success, message: String.signUpSucess)
+                    vc.signUpView.makeToast(String.signUpSucess, duration: 0.5, position: .center) { _ in
+                        vc.navigationController?.pushViewController(LogInViewController(), animated: true)
+                    }
                     print(username, email, password)
                 } errorHandler: { error in
-                    guard let error = error else {
+                    guard error != nil else {
                         vc.alert(title: String.error, message: String.serverError)
                         return
                     }
@@ -102,5 +105,13 @@ class SignUpViewController: BaseViewController {
 //            .bind { (vc, username) in
 ////                vc.signUpViewModel.validateUsername(of: username)
 //            }
+    }
+    
+    // MARK: - Setting Methods
+    override func setUI() {
+        super.setUI()
+        
+//        title = String.signUp
+//        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

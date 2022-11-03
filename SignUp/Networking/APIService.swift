@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Alamofire
+import Alamofire  // 👻 URLSession으로 해 보기
 
 class APIService {
     static let shared = APIService()
@@ -99,9 +99,3 @@ class APIService {
     }
 }
 
-
-enum AccountError: Int, Error {
-    case badRequest = 400     // Log In: Invalid email or password
-    case unauthorized = 401   // Profile: Please login to get access
-    case notAcceptable = 406  // Sign Up: Email already taken
-}

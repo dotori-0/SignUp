@@ -9,7 +9,15 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SignUpViewModel {
+
+protocol ValidationType {
+//    typealias completionHandler = @escaping () -> Void  // @escaping attribute may only be used in function parameter position
+    typealias completionHandler = () -> Void
+    typealias errorHandler = (Error?) -> Void
+}
+
+
+class SignUpViewModel: ValidationType {
     struct Input {
         let username: ControlProperty<String?>  // signUpView.usernameTextField.rx.text
         let email: ControlProperty<String?>     // signUpView.emailTextField.rx.text
@@ -71,7 +79,8 @@ class SignUpViewModel {
     }
     
     func signUp(userName: String, email: String, password: String,
-                completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+//                completionHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+                completionHandler: @escaping completionHandler, errorHandler: @escaping errorHandler) {
         APIService.shared.signUp(userName: userName, email: email, password: password) {
             completionHandler()
         } errorHandler: { error in
