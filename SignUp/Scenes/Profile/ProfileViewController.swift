@@ -22,7 +22,7 @@ class ProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "title"  // 왜 여기서 이렇게 한 번 해야 리스펀스도 타이틀에 보이는지?❔
+//        title = "title"  // 왜 여기서 이렇게 한 번 해야 리스펀스도 타이틀에 보이는지?❔
         bind()
     }
     
@@ -63,66 +63,10 @@ class ProfileViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
 
-        profileViewModel.requestProfile {
-             
-        } errorHandler: { error in
+        profileViewModel.requestProfile { error in
             print("error", error)
         }
-
         
-        // Input & Output
-//        let input = LogInViewModel.Input(email: profileView.emailTextField.rx.text,
-//                                         password: profileView.passwordTextField.rx.text,
-//                                         logInTap: profileView.logInButton.rx.tap)
-//
-//        let output = profileViewModel.validate(input)
-//
-//        output.isValidEmail
-//            .withUnretained(self)
-//            .bind { (vc, isValidEmail) in
-//                let color: CGColor = isValidEmail ? .valid : .invalid
-//                vc.profileView.emailTextField.layer.borderColor = color
-//            }
-//            .disposed(by: disposeBag)
-//
-//        output.isValidPassword
-//            .withUnretained(self)
-//            .bind { (vc, isValidPassword) in
-//                let color: CGColor = isValidPassword ? .valid : .invalid
-//                vc.profileView.passwordTextField.layer.borderColor = color
-//            }
-//            .disposed(by: disposeBag)
-//
-//        // 이렇게 하는 형태가 맞는지? ❔
-//        Observable.combineLatest(output.isValidEmail, output.isValidPassword)
-//            .bind { [weak self] (isValidEmail, isValidPassword) in
-//                self?.profileView.logInButton.isEnabled = isValidEmail && isValidPassword
-//            }
-//            .disposed(by: disposeBag)
-//
-//        output.logInTap
-//            .withUnretained(self)
-//            .bind { (vc, _) in
-//                guard let email = vc.profileView.emailTextField.text,
-//                      let password = vc.profileView.passwordTextField.text else {
-//                    vc.alert(title: String.error, message: String.inputReadingError)
-//                    return
-//                }
-//
-//                vc.profileViewModel.logIn(email: email, password: password) {
-//                    vc.profileView.makeToast(String.logInSuccess, duration: 0.5, position: .center) { _ in
-//                        vc.navigationController?.pushViewController(LogInViewController(), animated: true)
-//                    }
-//                    print(email, password)
-//                } errorHandler: { error in
-//                    guard error != nil else {
-//                        vc.alert(title: String.error, message: String.serverError)
-//                        return
-//                    }
-//
-//                    vc.alert(title: String.error, message: String.wrongEmailOrPassword)
-//                }
-//            }
-//            .disposed(by: disposeBag)
+        
     }
 }

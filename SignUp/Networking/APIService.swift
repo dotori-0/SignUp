@@ -24,7 +24,7 @@ final class APIService: HandlerType {
                 print(response.response?.statusCode)  // 406 Not Acceptable  // 200 OK
                 
                 guard let statusCode = response.response?.statusCode else {
-                    errorHandler(nil)  // 이런 걸 서버 통시 오류로 퉁쳐도 될지?❔
+                    errorHandler(nil)
                     return
                 }
                 
@@ -32,7 +32,7 @@ final class APIService: HandlerType {
 //                    case AccountError.notAcceptable.rawValue: // 이렇게?
                     case StatusCode.notAcceptable: errorHandler(AccountError.notAcceptable)  // 아님 이렇게?
                     case StatusCode.ok: completionHandler()
-                    default: errorHandler(nil)  // 이런 걸 서버 통시 오류로 퉁쳐도 될지?❔
+                    default: errorHandler(nil)
                 }
             }
     }

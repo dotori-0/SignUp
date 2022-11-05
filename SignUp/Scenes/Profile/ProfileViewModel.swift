@@ -11,8 +11,7 @@ import RxSwift
 class ProfileViewModel: HandlerType {
     let profile = PublishSubject<Profile>()
     
-    func requestProfile(completionHandler: @escaping completionHandler,
-                        errorHandler: @escaping errorHandler) {
+    func requestProfile(errorHandler: @escaping errorHandler) {
         APIService.shared.profile { [weak self] profile in
             guard let profile else {
                 self?.profile.onError(AccountError.serverError)
@@ -27,6 +26,5 @@ class ProfileViewModel: HandlerType {
             }
             self.profile.onError(error)
         }
-
     }
 }

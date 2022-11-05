@@ -51,7 +51,6 @@ class LogInViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
 
-        // 이렇게 하는 형태가 맞는지? ❔
         Observable.combineLatest(output.isValidEmail, output.isValidPassword)
             .bind { [weak self] (isValidEmail, isValidPassword) in
                 self?.logInView.logInButton.isEnabled = isValidEmail && isValidPassword
@@ -69,7 +68,8 @@ class LogInViewController: BaseViewController {
                 
                 vc.logInViewModel.logIn(email: email, password: password) {
                     vc.logInView.makeToast(String.logInSuccess, duration: 0.5, position: .center) { _ in
-                        vc.navigationController?.pushViewController(ProfileViewController(), animated: true)
+//                        vc.navigationController?.pushViewController(ProfileViewController(), animated: true)
+                        vc.setRootViewControllerToProfile()
                     }
                     print(email, password)
                 } errorHandler: { error in
@@ -82,5 +82,15 @@ class LogInViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    func setRootViewControllerToProfile() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        
+        let profileVC = ProfileViewController()
+        
+        sceneDelegate?.window?.rootViewController = profileVC
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
 }

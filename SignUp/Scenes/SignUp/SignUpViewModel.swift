@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Validation Class를 상속하는데 왜 여기서도 import를 해야 하는지? ❔
 import RxSwift
 import RxCocoa
 

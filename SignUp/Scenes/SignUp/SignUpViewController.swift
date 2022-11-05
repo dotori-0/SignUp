@@ -59,9 +59,8 @@ class SignUpViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        // 이렇게 하는 형태가 맞는지? ❔
         Observable.combineLatest(output.isValidUsername, output.isValidEmail, output.isValidPassword)
-//            .withUnretained(self)
+//            .withUnretained(self)  // binder로 변환 필요
 //            .bind(onNext: { (SignUpViewController, (Bool, Bool, Bool)) in
 //                <#code#>
 //            })
