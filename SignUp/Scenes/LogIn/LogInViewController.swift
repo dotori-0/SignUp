@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RxSwift  // BaseViewController에서 임포트 했는데 왜 또 적어야 하는지?
+import RxSwift
 
 class LogInViewController: BaseViewController {
     // MARK: - Properties
@@ -68,8 +68,7 @@ class LogInViewController: BaseViewController {
                 
                 vc.logInViewModel.logIn(email: email, password: password) {
                     vc.logInView.makeToast(String.logInSuccess, duration: 0.5, position: .center) { _ in
-//                        vc.navigationController?.pushViewController(ProfileViewController(), animated: true)
-                        vc.setRootViewControllerToProfile()
+                        vc.setRootViewController(to: ProfileViewController())
                     }
                     print(email, password)
                 } errorHandler: { error in
@@ -82,15 +81,5 @@ class LogInViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-    }
-    
-    func setRootViewControllerToProfile() {
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        
-        let profileVC = ProfileViewController()
-        
-        sceneDelegate?.window?.rootViewController = profileVC
-        sceneDelegate?.window?.makeKeyAndVisible()
     }
 }

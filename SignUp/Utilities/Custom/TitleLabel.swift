@@ -14,7 +14,6 @@ class TitleLabel: UILabel {
 
         self.text = text
         self.font = .boldSystemFont(ofSize: 40)
-        self.textColor = .label  // 없어도 됨? 👻
     }
     
     required init?(coder: NSCoder) {

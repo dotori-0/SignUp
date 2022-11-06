@@ -7,8 +7,12 @@
 
 import Foundation
 
+protocol UserDefaultsKey {
+    
+}
+
 @propertyWrapper
-struct UserDefault<T> {
+struct UserDefault<T>: UserDefaultsKey {
     let key: String
     let defaultValue: T
     let container: UserDefaults = .standard

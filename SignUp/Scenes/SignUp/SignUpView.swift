@@ -26,19 +26,6 @@ class SignUpView: BaseView {
         $0.isEnabled = false
     }
     
-//    let usernameTextField = CustomTextField().then {
-//        $0.placeholder = String.username
-//    }
-//
-//    let emailTextField = CustomTextField().then {
-//        $0.placeholder = String.email
-//    }
-//
-//    let passwordTextField = CustomTextField().then {
-//        $0.placeholder = String.password
-//    }
-
-    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)

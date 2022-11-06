@@ -81,7 +81,6 @@ class SignUpViewController: BaseViewController {
                 }
                 
                 vc.signUpViewModel.signUp(userName: username, email: email, password: password) {
-//                    vc.alert(title: String.success, message: String.signUpSucess)
                     vc.signUpView.makeToast(String.signUpSuccess, duration: 0.5, position: .center) { _ in
                         vc.navigationController?.pushViewController(LogInViewController(), animated: true)
                     }
@@ -96,23 +95,5 @@ class SignUpViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-            
-        
-        
-//        signUpView.usernameTextField.rx
-//            .text
-//            .orEmpty
-//            .withUnretained(self)
-//            .bind { (vc, username) in
-////                vc.signUpViewModel.validateUsername(of: username)
-//            }
-    }
-    
-    // MARK: - Setting Methods
-    override func setUI() {
-        super.setUI()
-        
-//        title = String.signUp
-//        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0CE4142917AF0400A41BD7 /* SetRootViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CE4132917AF0400A41BD7 /* SetRootViewController+Extension.swift */; };
 		0A2EC2142914219D0000E0E9 /* HandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2EC2132914219D0000E0E9 /* HandlerType.swift */; };
 		0A2EC216291426A90000E0E9 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2EC215291426A90000E0E9 /* Validation.swift */; };
 		0A2EC2182914290E0000E0E9 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2EC2172914290E0000E0E9 /* CommonViewModel.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0CE4132917AF0400A41BD7 /* SetRootViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetRootViewController+Extension.swift"; sourceTree = "<group>"; };
 		0A2EC2132914219D0000E0E9 /* HandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerType.swift; sourceTree = "<group>"; };
 		0A2EC215291426A90000E0E9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		0A2EC2172914290E0000E0E9 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				0A2EC219291431B60000E0E9 /* CGColor+Extension.swift */,
 				0A2EC21E291438D20000E0E9 /* UserDefaults+Extension.swift */,
 				0A2EC220291439400000E0E9 /* UserDefaultsKey+Extension.swift */,
+				0A0CE4132917AF0400A41BD7 /* SetRootViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				0A7A30322912F8970002ED95 /* LogInViewModel.swift in Sources */,
 				0A6C00A529127B8B00003294 /* Profile.swift in Sources */,
 				0A6C00C6291296CF00003294 /* SignUpViewModel.swift in Sources */,
+				0A0CE4142917AF0400A41BD7 /* SetRootViewController+Extension.swift in Sources */,
 				0A6C00AD2912881100003294 /* Alert+Extension.swift in Sources */,
 				0A6C00C429128FC200003294 /* TitleLabel.swift in Sources */,
 				0A6C00872912544E00003294 /* ViewController.swift in Sources */,

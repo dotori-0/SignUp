@@ -9,9 +9,6 @@ import UIKit
 
 class CustomTextField: UITextField {
     // MARK: - Initializers
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
     init(placeholder: String) {
         super.init(frame: .zero)
 

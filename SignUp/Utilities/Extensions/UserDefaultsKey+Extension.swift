@@ -11,4 +11,13 @@ extension UserDefaults {
     enum Key {
         static let token = "token"
     }
+    
+    static func delete(_ key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
+    
+    static func remove(_ key: UserDefault<String>) {
+//    static func remove(_ key: UserDefaultsKey) {
+        UserDefaults.standard.removeObject(forKey: key.key)
+    }
 }

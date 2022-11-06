@@ -27,4 +27,8 @@ class ProfileViewModel: HandlerType {
             self.profile.onError(error)
         }
     }
+    
+    func logOut() {
+        UserDefaults.delete(UserDefaults.Key.token)
+    }
 }

@@ -32,9 +32,4 @@ class CustomButton: UIButton {
         config.baseBackgroundColor = .systemMint
         configuration = config
     }
-    
-//    func updateButtonColor(with color: UIColor) {
-//        config.baseBackgroundColor = color
-//        configuration = config
-//    }
 }

@@ -29,10 +29,8 @@ final class APIService: HandlerType {
                 }
                 
                 switch statusCode {
-//                    case AccountError.notAcceptable.rawValue: // 이렇게?
-                    case StatusCode.notAcceptable: errorHandler(AccountError.notAcceptable)  // 아님 이렇게?
-                    case StatusCode.ok: completionHandler()
-                    default: errorHandler(nil)
+                    case AccountError.ok.rawValue: completionHandler()
+                    default: errorHandler(AccountError(rawValue: statusCode))  // 가능 코드: notAcceptable 406
                 }
             }
     }
@@ -49,8 +47,8 @@ final class APIService: HandlerType {
                         print("🐣 로그인 성공")
                         print(login.token)
                         print("UD token: \(UserDefaults.token)")
-//                        UserDefaults.standard.set(login.token, forKey: "token")  // 로그인할 때마다 토큰이 달라지므로 새로 갈아 끼우기
-                        UserDefaults.token = login.token
+                        
+                        UserDefaults.token = login.token  // 로그인할 때마다 토큰이 달라지므로 새로 갈아 끼우기
                         print("UD token: \(UserDefaults.token)")
                         completionHandler()
                     case .failure(_):
@@ -61,13 +59,9 @@ final class APIService: HandlerType {
                             errorHandler(nil)
                             return
                         }
-                        
-                        switch statusCode {
-//                            case AccountError.badRequest.rawValue: // 이렇게?
-                            case StatusCode.badRequest: errorHandler(AccountError.badRequest)  // 아님 이렇게?
-//                            case StatusCode.ok: completionHandler()  // case .success(let login): 에 해당하므로 생략
-                            default: errorHandler(nil)
-                        }
+
+//                        case StatusCode.ok: completionHandler()  // case .success(let login): 에 해당하므로 생략
+                        errorHandler(AccountError(rawValue: statusCode))  // 가능 코드: badRequest 406
                 }
             }
     }
@@ -92,12 +86,8 @@ final class APIService: HandlerType {
                             return
                         }
                         
-                        switch statusCode {
-//                            case AccountError.unauthorized.rawValue: // 이렇게?
-                            case StatusCode.unauthorized: errorHandler(AccountError.unauthorized)  // 아님 이렇게?
-//                            case StatusCode.ok: completionHandler()  // case .success(let profile): 에 해당하므로 생략
-                            default: errorHandler(nil)
-                        }
+//                        case StatusCode.ok: completionHandler()  // case .success(let login): 에 해당하므로 생략
+                        errorHandler(AccountError(rawValue: statusCode))  // 가능 코드: unauthorized 401
                 }
             }
     }

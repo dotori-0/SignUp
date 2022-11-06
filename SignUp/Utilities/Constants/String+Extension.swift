@@ -37,4 +37,5 @@ extension String {
     static let followers = "Followers"
     static let following = "Following"
     static let logOut = "Log Out"
+    static let logOutSucess = "성공적으로 로그아웃되었습니다.\n회원가입 화면으로 이동합니다."
 }
